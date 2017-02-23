@@ -15,11 +15,11 @@ gulp.task('eslint', ()=> {
         // ターミナルにエラーを出力
         console.error(title + '\n' + errorMsg);
         // エラーを通知
-        notifier.notify({
-          title: title,
-          message: errorMsg,
-          time: 3000
-        });
+        // notifier.notify({
+        //   title: title,
+        //   message: errorMsg,
+        //   time: 3000
+        // });
       }
     }))
     .pipe(eslint({ useEslintrc: true })) // .eslintrc を参照

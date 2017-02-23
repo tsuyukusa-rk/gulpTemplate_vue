@@ -42,7 +42,9 @@
     "gulp-util": "^3.0.8",
     "gulp-watch": "^4.3.11",
     "gulp-webpack": "^1.5.0",
+    "gulp-webserver": "^0.9.1",
     "install": "^0.8.7",
+    "json-server": "^0.9.5",
     "node-notifier": "^5.0.2",
     "node-sass": "^4.5.0",
     "npm": "^4.1.2",
@@ -60,5 +62,13 @@
     "vuex": "^2.1.2",
     "webpack": "^2.2.1",
     "webpack-dev-server": "^2.3.0"
+  },
+  "babel": {
+    "presets": [
+      "es2015"
+    ],
+    "plugins": [
+      "transform-vue-jsx"
+    ]
   }
 }

@@ -1,23 +1,23 @@
 import gulp from 'gulp';
-import browserSync from 'browser-sync';
 import config from '../config.js';
-const browserSyncCreate =  browserSync.create();
+import webserver from 'gulp-webserver';
 
 /*
 * ローカルサーバーを立てる
 */
-gulp.task('server', () => {
-  return browserSyncCreate.init({
-    server: {
-      baseDir: config.dist,
-      directory: false,
-      index: "/index.html"
-    },
-    port: 3001
-  });
+gulp.task('server', ['apiServer'], ()=> {
+  return gulp.src(config.dist)
+    .pipe(webserver({
+      host: 'localhost',
+      port: 3001,
+      livereload: true,
+      open: true,
+      fallback: 'index.html',
+      proxies: [
+        {
+          source: '/api',
+          target: 'http://localhost:7777'
+        }
+      ]
+    }));
 });
-
-/*
-* ローカルサーバーの画面リロード
-*/
-gulp.task('reload', () => browserSyncCreate.reload());
