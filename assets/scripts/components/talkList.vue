@@ -49,5 +49,5 @@
       height: 50px;
     }
   }
-  .chatDisplay__speakerContents {}  
+  .chatDisplay__speakerContents {}
 </style>

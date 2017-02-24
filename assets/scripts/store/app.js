@@ -24,13 +24,17 @@ const actions = {
     context.commit('increment');
   },
   talkList({commit}, products) {
-    api.get({
-      then: (res)=> {
-        commit('talkList', res.data);
-      },
-      catch: (err)=> {
-        console.log(err);
-      }
+    new Promise((resolve, reject)=> {
+      api.post({
+        param: products,
+        then: (res)=> { resolve(res); },
+        catch: (err)=> { reject(err); }
+      });
+    }).then((fetchPostArg)=> {
+      api.get({
+        then: (res)=> { commit('talkList', res.data); },
+        catch: (err)=> {}
+      });
     });
   }
 };

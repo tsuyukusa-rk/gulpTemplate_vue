@@ -1,6 +1,7 @@
 import gulp from 'gulp';
 import config from '../config.js';
 import webserver from 'gulp-webserver';
+import browserSync from 'browser-sync';
 
 /*
 * ローカルサーバーを立てる
@@ -20,4 +21,18 @@ gulp.task('server', ['apiServer'], ()=> {
         }
       ]
     }));
+});
+
+gulp.task('server2', ()=> {
+  return browserSync.create().init({
+    proxy: "localhost:3001",
+    // server: {
+    //   baseDir: config.dist,
+    //   directory: false,
+    //   index: '/index.html'
+    // },
+    open: 'tunnel',
+    port: 9000,
+    tunnel: true
+  });
 });

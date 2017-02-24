@@ -16,16 +16,19 @@ const api = {
       });
   },
   post: (setting)=> {
-    return axios.post('/api/talkList', {
-      firstName: 'Fred',
-      lastName: 'Flintstone'
-    })
-    .then(function (response) {
-      console.log(response);
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
+    const param = setting.param || {
+      id: new Date().getTime(),
+      type: "is-left",
+      icon: "https://placehold.jp/150x150.png",
+      text: "サンプルサンプルサンプルサンプルサンプルサンプル"
+    };
+    return axios.post('/api/talkList', param)
+      .then(function (res) {
+        setting.then(res);
+      })
+      .catch(function (err) {
+        setting.catch(err);
+      });
   }
 };
 

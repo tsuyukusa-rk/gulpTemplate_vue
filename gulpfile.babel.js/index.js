@@ -21,6 +21,9 @@ gulp.task('build:dev', (callback) => {return runSequence('ejs', 'scss', 'webpack
 * Sassとか使うならその処理を追加
 */
 gulp.task('default', () => {return runSequence('clean', 'build:dev', 'eslint', 'server', 'watch')});
+/*
+*/
+gulp.task('test', () => {return runSequence('clean', 'build:dev', 'eslint', 'server', 'server2', 'watch')});
 
 /*
 * dist用の一連のファイルコピー（現状使用してない）

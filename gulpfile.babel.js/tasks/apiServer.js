@@ -15,7 +15,7 @@ gulp.task('apiServer',()=>{
     .use(middlewares)
     .use(router)
     .get('/echo', function (req, res) {
-      res.jsonp(req.query)
+      res.jsonp(req.query);
     })
     .listen(7777,function () {
       console.log('JSON Server is running');
