@@ -9,6 +9,7 @@
 </template>
 
 <script>
+  import mutationTypes from '../store/mutationTypes';
   export default {
     data () {
       return {
@@ -18,7 +19,7 @@
     },
     methods: {
       send () {
-        this.$store.dispatch('talkList', {
+        this.$store.dispatch(mutationTypes.talkList, {
           id: new Date().getTime(),
           type: 'is-right',
           icon: 'https://placehold.jp/150x150.png',

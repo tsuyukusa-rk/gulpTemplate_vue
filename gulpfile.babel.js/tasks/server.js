@@ -12,7 +12,7 @@ gulp.task('server', ['apiServer'], ()=> {
       host: 'localhost',
       port: 3001,
       livereload: true,
-      open: true,
+      open: false,
       fallback: 'index.html',
       proxies: [
         {
@@ -31,8 +31,8 @@ gulp.task('server2', ()=> {
     //   directory: false,
     //   index: '/index.html'
     // },
-    open: 'tunnel',
-    port: 9000,
-    tunnel: true
+    // open: 'external',
+    port: 9000
+    // tunnel: true
   });
 });

@@ -25,5 +25,5 @@
 
 <style lang="sass">
   // ファンデーション
-  @import './assets/styles/_app';
+  @import './assets/styles/foundation/_all';
 </style>

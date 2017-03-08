@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import api from '../utils/api';
+import mutationTypes from './mutationTypes'
 Vue.use(Vuex);
 
 // 初期の状態データ
@@ -20,10 +21,10 @@ const getters = {
 // アクションは任意の非同期処理を含むことができる。
 // store.dispatch('increment');で呼び出す。
 const actions = {
-  increment(context) {
-    context.commit('increment');
+  [mutationTypes.increment](context) {
+    context.commit(mutationTypes.increment);
   },
-  talkList({commit}, products) {
+  [mutationTypes.talkList]({commit}, products) {
     new Promise((resolve, reject)=> {
       api.post({
         param: products,
@@ -32,7 +33,7 @@ const actions = {
       });
     }).then((fetchPostArg)=> {
       api.get({
-        then: (res)=> { commit('talkList', res.data); },
+        then: (res)=> { commit(mutationTypes.talkList, res.data); },
         catch: (err)=> {}
       });
     });
@@ -40,12 +41,12 @@ const actions = {
 };
 // state更新のための処理
 const mutations = {
-  increment(state) {
+  [mutationTypes.increment](state) {
     state.count++;
     console.log(state);
   },
-  talkList(state, data) {
-    state.talkList = data;
+  [mutationTypes.talkList](state, data) {
+    state[mutationTypes.talkList] = data;
     console.log('success:talkList  ' + data);
   }
 };

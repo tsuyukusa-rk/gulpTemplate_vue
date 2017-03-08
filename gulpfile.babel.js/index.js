@@ -13,17 +13,17 @@ requireDir('./tasks', { recurse: true });
 * build:dev
 * 画像とかコピー後、HTML,CSS,JSはUTF-8に変換する
 */
-gulp.task('build:dev', (callback) => {return runSequence('ejs', 'scss', 'webpack', 'copy_dev', callback)});
+gulp.task('build:dev', (callback) => {return runSequence('ejs', 'scss', 'webpack', 'copy_dev', 'imageMin', callback)});
 
 /*
 * 作業用タスク（現状使用してない）
 * ToDo: lintとか入れる
 * Sassとか使うならその処理を追加
 */
-gulp.task('default', () => {return runSequence('clean', 'build:dev', 'eslint', 'server', 'watch')});
+gulp.task('default', () => {return runSequence('clean', 'build:dev', 'eslint', 'server', 'server2', 'watch')});
 /*
 */
-gulp.task('test', () => {return runSequence('clean', 'build:dev', 'eslint', 'server', 'server2', 'watch')});
+gulp.task('test', () => {return runSequence('karma')});
 
 /*
 * dist用の一連のファイルコピー（現状使用してない）
