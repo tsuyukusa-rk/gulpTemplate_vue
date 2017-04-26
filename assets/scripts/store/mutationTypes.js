@@ -1,6 +1,2 @@
-const mutationTypes = {
-  increment: 'increment',
-  talkList: 'talkList'
-};
-
-export default mutationTypes;
+export const INCREMENT = 'INCREMENT';
+export const TALKLIST = 'TALKLIST';

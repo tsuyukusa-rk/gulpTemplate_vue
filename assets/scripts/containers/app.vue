@@ -1,9 +1,8 @@
-<template>
-  <div id="app">
-    <headerView></headerView>
-    <mainView></mainView>
-    <footerView></footerView>
-  </div>
+<template lang="pug">
+  div#app()
+    headerView()
+    mainView()
+    footerView()
 </template>
 
 <script>
@@ -11,19 +10,19 @@
   import footerView from './layout/footer';
   import mainView from './layout/main';
   export default {
-    data () {
-      return {};
-    },
-    methods: {},
     components: {
       headerView: headerView,
       footerView: footerView,
       mainView: mainView
-    }
+    },
+    data () {
+      return {};
+    },
+    methods: {}
   };
 </script>
 
-<style lang="sass">
+<style lang="stylus">
   // ファンデーション
-  @import './assets/styles/foundation/_all';
+  @import '../../styles/foundation/_all'
 </style>

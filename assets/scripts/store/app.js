@@ -1,19 +1,25 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import api from '../utils/api';
-import mutationTypes from './mutationTypes'
+import  {
+  INCREMENT,
+  TALKLIST
+} from './mutationTypes'
 Vue.use(Vuex);
 
 // 初期の状態データ
 const state = {
-  count: 0,
-  talkList: []
+  [INCREMENT]: 0,
+  [TALKLIST]: []
 };
 // storeの状態を返却する。
 // なんらかの処理を加え加工することも可能
 const getters = {
   doneTodos(state) {
     return state.todos.filter(todo => todo.done);
+  },
+  talklist(state) {
+    return state[TALKLIST];
   }
 };
 // ミューテーションと似ているが
@@ -21,10 +27,10 @@ const getters = {
 // アクションは任意の非同期処理を含むことができる。
 // store.dispatch('increment');で呼び出す。
 const actions = {
-  [mutationTypes.increment](context) {
-    context.commit(mutationTypes.increment);
+  [INCREMENT](context) {
+    context.commit(INCREMENT);
   },
-  [mutationTypes.talkList]({commit}, products) {
+  [TALKLIST]({commit}, products) {
     new Promise((resolve, reject)=> {
       api.post({
         param: products,
@@ -33,7 +39,7 @@ const actions = {
       });
     }).then((fetchPostArg)=> {
       api.get({
-        then: (res)=> { commit(mutationTypes.talkList, res.data); },
+        then: (res)=> { commit(TALKLIST, res.data); },
         catch: (err)=> {}
       });
     });
@@ -41,12 +47,12 @@ const actions = {
 };
 // state更新のための処理
 const mutations = {
-  [mutationTypes.increment](state) {
+  [INCREMENT](state) {
     state.count++;
     console.log(state);
   },
-  [mutationTypes.talkList](state, data) {
-    state[mutationTypes.talkList] = data;
+  [TALKLIST](state, data) {
+    state[TALKLIST] = data;
     console.log('success:talkList  ' + data);
   }
 };

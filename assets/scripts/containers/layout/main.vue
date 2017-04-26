@@ -1,27 +1,42 @@
-<template>
-  <main class="main">
-    <talkListView :sample="this.$store.state.talkList"></talkListView>
-    <sendFormView></sendFormView>
-  </main>
+<template lang="pug">
+  main.main
+    talkListView( v-bind:sample="talklist" )
+    sendFormView()
 </template>
 
 <script>
   import talkListView from '../../components/talkList';
   import sendFormView from '../../components/sendForm';
+  import { TALKLIST } from '../../store/mutationTypes';
+  import {
+    mapGetters,
+    mapActions
+  } from 'vuex';
   export default {
-    methods: {},
-    data () {
-      return {};
-    },
     components: {
       talkListView: talkListView,
       sendFormView: sendFormView
+    },
+    data () {
+      return {};
+    },
+    computed: {
+      ...mapGetters([
+        'talklist'
+      ])
+    },
+    methods: {
+      ...mapActions([
+        TALKLIST
+      ])
+    },
+    mounted () {
+      this.TALKLIST();
     }
   };
 </script>
 
-<style lang="sass" scoped>
-  .main {
-    border-bottom: 1px solid #000;
-  }
+<style lang="stylus" scoped>
+  .main
+    border-bottom 1px solid #000
 </style>

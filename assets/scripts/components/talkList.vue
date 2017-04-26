@@ -1,6 +1,6 @@
-<template>
+<template lang="pug">
   <div class="chatDisplay">
-    <p class="chatDisplay__title">宿名宿名宿名</p>
+    <p class="chatDisplay__title">サンプル</p>
     <ul class="chatDisplay__talklist" v-for="(item,i) in sample">
       <li :class="item.type">
         <dl class="chatDisplay__speakerBox">
@@ -18,8 +18,8 @@
   };
 </script>
 
-<style lang="sass" scoped>
-  @import "../../styles/utility/_all.scss";
+<style lang="stylus" scoped>
+  @import "../../styles/utility/_all";
   .chatDisplay {}
   .chatDisplay__title {
     border-bottom: 1px solid #000;
