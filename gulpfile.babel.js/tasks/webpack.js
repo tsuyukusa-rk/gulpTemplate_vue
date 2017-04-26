@@ -7,7 +7,7 @@ import webpackConfig from '../webpack.config.js';
 * webpack
 */
 gulp.task('webpack', ()=> {
-  return gulp.src(config.src + '/**/*.{vue,js}')
+  return gulp.src(config.webpack.src)
     .pipe(gulpWebpack(webpackConfig))
     .pipe(gulp.dest(config.dist));
 });

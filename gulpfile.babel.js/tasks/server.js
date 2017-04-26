@@ -12,8 +12,9 @@ gulp.task('server', ['apiServer'], ()=> {
       host: 'localhost',
       port: 3001,
       livereload: true,
-      open: false,
-      fallback: 'index.html',
+      open: true,
+      // path: '_index/index.html',
+      fallback: '_index/index.html',
       proxies: [
         {
           source: '/api',
