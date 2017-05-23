@@ -33,7 +33,13 @@ module.exports = {
       { test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader' },
       { test: /\.vue$/, loader: 'vue-loader' },
       { test: /\.scss$/, loaders: ['style-loader', 'css-loader', 'sass-loader', 'scss-loader'] },
-      { test: /\.styl$/, loaders: ['stylus-loader'] },
+      { test: /\.styl$/, loaders: [
+          'style',
+          'css?modules&importLoaders=1&localIdentName=[path]___[name]__[local]___[hash:base64:5]',
+          'resolve-url',
+          'stylus'
+        ]
+      },
       { test: /\.ejs$/, loader: 'ejs-loader' },
     ],
     rules: [

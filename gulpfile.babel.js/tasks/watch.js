@@ -15,6 +15,6 @@ gulp.task('watch', () => {
   watch(config.watch.vue, () => {return runSequence('webpack', 'eslint')});
   watch(config.watch.do, () => {return runSequence('copy_dev')});
   watch(config.watch.json, () => {return runSequence('copy_dev')});
-  watch(config.watch.imageMin, () => {return runSequence('imageMin')});
+  watch(config.watch.imageMin, () => {return runSequence('imageMin:dev')});
   watch(config.watch.pug, () => {return runSequence('pug')});
 });

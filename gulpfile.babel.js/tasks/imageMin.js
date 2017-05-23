@@ -3,7 +3,7 @@ import imagemin from 'gulp-imagemin';
 import pngquant from 'imagemin-pngquant';
 import config from '../config.js';
 
-gulp.task('imageMin', () => {
+const task = (type) => {
   gulp.src(config.imageMin)
     .pipe(imagemin(
       [
@@ -15,5 +15,7 @@ gulp.task('imageMin', () => {
       }
     ))
     .pipe(imagemin())
-    .pipe(gulp.dest(config.dist));
-});
+    .pipe(gulp.dest(config[type]));
+};
+gulp.task('imageMin:dev', () => { task('dist'); });
+gulp.task('imageMin:artifacts', () => { task('artifacts'); });

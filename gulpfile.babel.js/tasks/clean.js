@@ -5,4 +5,4 @@ import del from 'del';
 /*
 * 対象ディレクトリ内のファイルを除去
 */
-gulp.task('clean', (callback) => del([config.dist], callback));
+gulp.task('clean', (callback) => { return del([config.dist, config.artifacts], callback) });

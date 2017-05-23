@@ -1,6 +1,7 @@
 module.exports = {
   src: './assets',
   dist: './dist',
+  artifacts: './artifacts',
   watch: {
     bin: './assets/**/*.{ico,eot,ttf,wotf}',
     ejs: ['./assets/**/*.ejs'],
@@ -20,6 +21,9 @@ module.exports = {
       './assets/**/*.do',
       './assets/**/*.json',
       '!./assets/html/**/*.json'
+    ],
+    artifacts: [
+      '!./dist/**/*.map',
     ]
   },
   ejs: [
@@ -28,7 +32,7 @@ module.exports = {
   ],
   pug: [
     './assets/**/*.pug',
-    './assets/**/_*.pug'
+    '!./assets/**/_*.pug'
   ],
   scss: './assets/**/*.scss',
   stylus: [
@@ -37,12 +41,19 @@ module.exports = {
   ],
   webpack: {
     entry: {
-      'js/app': './assets/scripts/app.js'
+      'js/app': [
+        'babel-polyfill',
+        'es6-promise',
+        'whatwg-fetch',
+        './assets/scripts/app.js'
+      ]
     },
     output: {
       filename: '[name].js'
     },
-    src: './assets/**/*.{vue,js}'
+    src: [
+      './assets/**/*.{vue,js}'
+    ]
   },
   eslint: {
     src: ['./assets/**/*.vue']
